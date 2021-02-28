@@ -5,7 +5,7 @@ Mémo : tout ce qui est relatif au réseau en vrac (avant d'avoir une bonne comp
 Debian
 ```sh
 # domaine local (tout ne doit pas être utile)
-apt install avahi-daemon avahi-discover winbind libnss-winbind libnss-mdns
+apt install avahi-daemon avahi-discover dnsutils winbind libnss-winbind libnss-mdns
 ```
 Nota : nsswitch est modifié comme ceci
 ```sh
