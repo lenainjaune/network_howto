@@ -20,7 +20,9 @@ ping xxx.local fonctionne ou pas MAIS ping xxx (seul) fonctionne
 Je pense que ça vient d'un paquet lié à Samba (depuis emmabuntus avec samba installé par défaut, 
 après désinstallation de Samba => ping xxx ne marche plus
 # Pont niv2 (bridge)
-Un bridge (couche 2 du modèle OSI), permet de relier des réseaux entre eux. C'est particulièrement pratique pour que des machines virtuelles (VMs) aient accès au LAN.
+Un bridge (couche 2 du modèle OSI), permet de relier des réseaux entre eux. C'est particulièrement pratique pour que des machines virtuelles (VMs) aient accès au LAN et aient accès entre elles.
+## Network Manager
+Normalement présent ou installable sur toutes les distributions Linux modernes.
 ```sh
 # https://www.cyberciti.biz/faq/how-to-add-network-bridge-with-nmcli-networkmanager-on-linux/
 
