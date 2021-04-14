@@ -23,6 +23,7 @@ après désinstallation de Samba => ping xxx ne marche plus
 Un bridge (couche 2 du modèle OSI), permet de relier des réseaux entre eux. C'est particulièrement pratique pour que des machines virtuelles (VMs) aient accès au LAN.
 ```sh
 # https://www.cyberciti.biz/faq/how-to-add-network-bridge-with-nmcli-networkmanager-on-linux/
+
 # Ajouter bridge
 nmcli con add ifname br0 type bridge con-name br0
 nmcli con add type bridge-slave ifname eno1 master br0
