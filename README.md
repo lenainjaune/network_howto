@@ -42,3 +42,64 @@ nmcli connection delete br0
 nmcli connection delete bridge-slave-eno1
 # nmcli -t connection show
 ```
+# Access Point Wifi (brouillon)
+```sh
+# Pour la clé Wifi Ralink RT5372 (https://wiki.debian.org/fr/rt2800usb), achat Leclerc < 10€
+
+
+user@host:~# sudo cat /etc/apt/sources.list
+# deb http://ftp.fr.debian.org/debian/ stretch main
+deb http://ftp.fr.debian.org/debian/ stretch main non-free
+
+user@host:~# sudo apt-get update
+
+
+# indispensables et NON indispensables (haveged est recommandé en raison de la Low entropy et rfill - voir dessous)
+user@host:~$ sudo apt-get install -y make git iw hostapd haveged firmware-misc-nonfree rfkill
+user@host:~$ #sudo apt-get install -y util-linux procps iproute2 dnsmasq iptables wireless-tools
+
+
+
+
+user@host:~$ git clone https://github.com/oblique/create_ap
+user@host:~$ cd create_ap
+user@host:~$ make install
+user@host:~$ cd .. && rm -rf create_ap
+user@host:~$ ip ad
+...
+3: xenbr0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether d8:cb:8a:36:82:ed brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.127/24 brd 192.168.1.255 scope global xenbr0
+       valid_lft forever preferred_lft forever
+...
+19: wlx70f11c07152e: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 70:f1:1c:07:15:2e brd ff:ff:ff:ff:ff:ff
+
+# On active l'AP Wifi (wlx... IF USB et xenbr0 IF avec IP - ici le bridge Xen)
+user@host:~$ sudo create_ap --no-virt -m bridge wlx70f11c07152e xenbr0 test-wifi azerty123456
+# nota 1 : environnement virtuel ? WARN: Your adapter does not fully support AP virtual interface, enabling --no-virt
+# nota 2 : WARN: Low entropy detected. We recommend you to install `haveged'
+
+=> OK j'ai la wifi sur mon smartphone
+
+user@host:~$ ping 8.8.8.8
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=116 time=12.4 ms
+...
+^C
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 4ms
+rtt min/avg/max/mdev = 11.650/12.554/13.661/0.833 ms
+
+=> OK quand on interrompt la commande on a toujours accès au réseau
+
+
+# nota : dépendance rfkill car au 1er lancement de create_ap j'ai eu les messages
+rfkill: WLAN soft blocked
+...
+Error: Failed to run hostapd, maybe a program is interfering.
+If an error like 'n80211: Could not configure driver mode' was thrown
+try running the following before starting create_ap:
+    nmcli r wifi off
+    rfkill unblock wlan
+# nmcli r ... n'a pas fonctionné mais rfkill ... a fonctionné
+```
