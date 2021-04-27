@@ -71,8 +71,7 @@ user@host:~$ ip ad
     link/ether 70:f1:1c:07:15:2e brd ff:ff:ff:ff:ff:ff
 
 # On active l'AP Wifi (wlx... IF USB et xenbr0 IF avec IP - ici le bridge Xen)
-user@host:~$ sudo rfkill unblock wlan
-user@host:~$ sudo create_ap --no-virt -m bridge wlx70f11c07152e xenbr0 test-wifi azerty123456
+user@host:~$ sudo bash -c "rfkill unblock wlan ; create_ap --no-virt -m bridge wlx70f11c07152e br0 test-ap azerty123456"
 # nota 1 : environnement virtuel ? WARN: Your adapter does not fully support AP virtual interface, enabling --no-virt
 # nota 2 : WARN: Low entropy detected. We recommend you to install `haveged'
 
