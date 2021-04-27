@@ -46,20 +46,15 @@ nmcli connection delete bridge-slave-eno1
 ```sh
 # Pour la clé Wifi Ralink RT5372 (https://wiki.debian.org/fr/rt2800usb), achat Leclerc < 10€
 
-
 user@host:~# sudo cat /etc/apt/sources.list
 # deb http://ftp.fr.debian.org/debian/ stretch main
 deb http://ftp.fr.debian.org/debian/ stretch main non-free
 
 user@host:~# sudo apt-get update
 
-
 # indispensables et NON indispensables (haveged est recommandé en raison de la Low entropy et rfill - voir dessous)
 user@host:~$ sudo apt-get install -y make git iw hostapd haveged firmware-misc-nonfree rfkill
 user@host:~$ #sudo apt-get install -y util-linux procps iproute2 dnsmasq iptables wireless-tools
-
-
-
 
 user@host:~$ git clone https://github.com/oblique/create_ap
 user@host:~$ cd create_ap
@@ -76,6 +71,7 @@ user@host:~$ ip ad
     link/ether 70:f1:1c:07:15:2e brd ff:ff:ff:ff:ff:ff
 
 # On active l'AP Wifi (wlx... IF USB et xenbr0 IF avec IP - ici le bridge Xen)
+user@host:~$ sudo rfkill unblock wlan
 user@host:~$ sudo create_ap --no-virt -m bridge wlx70f11c07152e xenbr0 test-wifi azerty123456
 # nota 1 : environnement virtuel ? WARN: Your adapter does not fully support AP virtual interface, enabling --no-virt
 # nota 2 : WARN: Low entropy detected. We recommend you to install `haveged'
