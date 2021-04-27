@@ -99,3 +99,7 @@ try running the following before starting create_ap:
     rfkill unblock wlan
 # nmcli r ... n'a pas fonctionné mais rfkill ... a fonctionné
 ```
+# Ping
+## Statistiques sans interruption
+[Check ping statistics without stopping](https://unix.stackexchange.com/questions/143845/check-ping-statistics-without-stopping)
+Ctrl + \
