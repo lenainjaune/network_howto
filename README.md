@@ -112,4 +112,4 @@ Nota : pour le cas de Windows édition familiale, on ne pourra pas gérer le com
 
 
 [1]
-Les causes possibles sont : un mauvais branchement, un câble défectueux, une carte réseau défectueuse ou la carte mère, un pilote non installé ou opérationnel, le système d'exploitation défectueux.
+Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
