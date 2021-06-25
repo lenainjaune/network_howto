@@ -102,3 +102,14 @@ try running the following before starting create_ap:
 ## Statistiques sans interruption
 Linux : [Ctrl + \\](https://unix.stackexchange.com/questions/143845/check-ping-statistics-without-stopping)
 
+# Windows - Accès entre PCs en zero-conf
+Je voudrais copier les données de PC1 vers PC2 le plus simplement. Je branche un câble ethernet entre les 2 PCs sur une interface réseau RJ-45. Les cartes réseau des PCs actuels possèdent la fonctionnalité auto-MDX ainsi on peut prendre indistinctement un câble droit ou croisé. Vu que les PCs sont connectés entre eux, chaque PC aura une adresse automatique par autonégociation APIPA dans le réseau **169.254.0.0/16**. La connectivité APIPA pourra se vérifier en testant avec pc1 <- **ping** *hostname* -> pc2 (on peut utiliser directement les hostname mais aussi les IPs. Si rien ne se passe, c'est qu'il y a un élément qui bloque la communication tel un parefeu ; dans ce cas il faut le désactiver. Si après avoir éliminé toute cause de blocage, la connectivité n'est toujours pas bonne il faut creuser (voir [1]). La connectivité est à ce stade opérationnelle.
+
+## Windows édition Pro, Entreprise etc. (autre que familiale)
+On peut directement ouvrir un partage administratif depuis PC1 vers PC2, en ouvrant un navigateur et en tapant dans la barre d'adresse **\\pc2\c$**. Si tout se passe bien, une fenêtre d'authentification devrait s'afficher. Cela indique qu'il faut un compte pour se connecter et celui qui passera dans tous les cas c'est le compte **administrateur** MAIS par défaut ce compte est désactivé et sans mot de passe. Il faut donc l'activer, fournir un mot de passe et recommencer l'opération.
+
+Nota : pour le cas de Windows édition familiale, on ne pourra pas gérer le compte administrateur. Il faudra donc partager un dossier (%userprofile% par exemple) et donner les droits "Controle Total" pour *utilisateur* dont on connait le mot de passe (sinon on peut le redéfinir) et se connecter au partage avec lui et son mot de passe
+
+
+[1]
+Les causes possibles sont : un mauvais branchement, un câble défectueux, une carte réseau défectueuse ou la carte mère, un pilote non installé ou opérationnel, le système d'exploitation défectueux.
