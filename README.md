@@ -108,7 +108,7 @@ Je voudrais copier les données de PC1 vers PC2 le plus simplement. Je branche u
 ## Windows édition Pro, Entreprise etc. (autre que familiale)
 On peut directement ouvrir un partage administratif depuis PC1 vers PC2, en ouvrant un navigateur et en tapant dans la barre d'adresse **\\pc2\c$**. Si tout se passe bien, une fenêtre d'authentification devrait s'afficher. Cela indique qu'il faut un compte pour se connecter et celui qui passera dans tous les cas c'est le compte **administrateur** MAIS par défaut ce compte est désactivé et sans mot de passe. Il faut donc l'activer, fournir un mot de passe et recommencer l'opération.
 
-Nota : pour le cas de Windows édition familiale, on ne pourra pas gérer le compte administrateur. Il faudra donc partager un dossier (%userprofile% par exemple) et donner les droits "Controle Total" pour *utilisateur* dont on connait le mot de passe (sinon on peut le redéfinir) et se connecter au partage avec lui et son mot de passe
+Nota : pour le cas de Windows édition familiale, on ne pourra pas gérer le compte administrateur. Il faudra donc partager un dossier (%userprofile% par exemple) et donner les droits "Controle Total" pour *utilisateur* dont on connait le mot de passe (sinon on peut le redéfinir) et se connecter au partage avec lui et son mot de passe.
 
 
 [1]
