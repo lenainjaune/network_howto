@@ -111,6 +111,15 @@ TODO : éliminer le mot de passe administrateur (et non le rendre vide à priori
 
 Nota : pour le cas de Windows édition familiale, on ne pourra pas gérer le compte administrateur. Il faudra donc partager un dossier (%userprofile% par exemple) et donner les droits "Controle Total" pour *utilisateur* dont on connait le mot de passe (sinon on peut le redéfinir) et se connecter au partage avec lui et son mot de passe.
 
+# Windows gestion IP depuis CLI
+[Source](https://tweaks.com/windows/40339/configure-ip-address-and-dns-from-command-line/)
+```bash
+netsh interface ipv4 show interfaces
+:: affiche "Connexion au réseau local" ; 'é' et non ''' ou '�' ... ah les encodages sous Windows :|
+netsh interface ip set address name="Connexion au r�seau local" static 192.168.1.70 255.255.255.0 192.168.1.1 1"
+netsh interface ip set dns name="Connexion au r�seau local" static 192.168.1.10
+```
+
 
 [1]
 Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
