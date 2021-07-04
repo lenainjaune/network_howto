@@ -111,7 +111,7 @@ TODO : éliminer le mot de passe administrateur (et non le rendre vide à priori
 
 Nota : pour le cas de Windows édition familiale, on ne pourra pas gérer le compte administrateur. Il faudra donc partager un dossier (%userprofile% par exemple) et donner les droits "Controle Total" pour *utilisateur* dont on connait le mot de passe (sinon on peut le redéfinir) et se connecter au partage avec lui et son mot de passe.
 
-# Windows gestion IP depuis CLI
+# Windows gestion IP depuis CLI (admin)
 [Source](https://tweaks.com/windows/40339/configure-ip-address-and-dns-from-command-line/)
 ```bash
 netsh interface ipv4 show interfaces
