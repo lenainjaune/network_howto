@@ -119,7 +119,8 @@ netsh interface ipv4 show interfaces
 netsh interface ip set address name="Connexion au r�seau local" static 192.168.1.70 255.255.255.0 192.168.1.1 1"
 netsh interface ip set dns name="Connexion au r�seau local" static 192.168.1.10
 ```
-
+Attention : ces modifications sont persistantes, il existe surement une manière de faire comme avec ```ip ad```
+TODO : permettre la configuration temporaire
 
 [1]
 Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
