@@ -53,14 +53,14 @@ deb http://ftp.fr.debian.org/debian/ stretch main non-free
 user@host:~# sudo apt-get update
 
 # indispensables et NON indispensables (haveged est recommandé en raison de la Low entropy et rfkill - voir dessous)
-user@host:~$ sudo apt install -y make git iw hostapd haveged firmware-misc-nonfree rfkill
+user@host:~$ sudo apt install -y make git iw hostapd haveged firmware-misc-nonfree rfkill linux-headers-$(uname -r)
 user@host:~$ #sudo apt install -y util-linux procps iproute2 dnsmasq iptables wireless-tools
+user@host:~$ 
 
 user@host:~$ git clone https://github.com/oblique/create_ap
 user@host:~$ cd create_ap
 user@host:~$ make install
 user@host:~$ cd .. && rm -rf create_ap
-user@host:~$ ip ad
 ...
 3: xenbr0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
     link/ether d8:cb:8a:36:82:ed brd ff:ff:ff:ff:ff:ff
