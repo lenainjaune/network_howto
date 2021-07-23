@@ -19,6 +19,68 @@ ping xxx.local fonctionne ou pas MAIS ping xxx (seul) fonctionne
 
 Je pense que ça vient d'un paquet lié à Samba (depuis emmabuntus avec samba installé par défaut, 
 après désinstallation de Samba => ping xxx ne marche plus
+## Bonjour (Apple) depuis Windows (7, etc.)
+https://www.manageengine.com/products/desktop-central/software-installation/silent_install_Bonjour-Print-Services-2.0.2.html
+
+Silent Installation Switch 	cscript.exe install_bonjour.vbs
+
+```vbs
+install_bonjour.vbs ouvert
+'ManageEngine Desktop Central 
+
+'Script to install Bonjour
+'======================================================
+'Get the Agent Installed directory from the Registry location details
+'====================================================================
+Err.Clear
+
+Set WshShell = WScript.CreateObject("WScript.Shell")
+checkOSArch = WshShell.RegRead("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PROCESSOR_ARCHITECTURE")
+returnValue = 0
+'Wscript.Echo checkOSArch 
+
+if Err Then
+	Err.Clear
+	'WScript.Echo "The OS Architecture is unable to find ,so it was assumed to be 32 bit"
+	regkey = "HKEY_LOCAL_MACHINE\SOFTWARE\AdventNet\DesktopCentral\DCAgent"
+else
+	if checkOSArch = "x86" Then
+		'Wscript.Echo "The OS Architecture is 32 bit"
+		regkey = "HKEY_LOCAL_MACHINE\SOFTWARE\AdventNet\DesktopCentral\DCAgent"
+	else
+		'Wscript.Echo "The OS Architecture is 64 bit"
+		regkey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\AdventNet\DesktopCentral\DCAgent"
+	End IF
+End If
+
+agentDir = WshShell.RegRead(regkey & "\DCAgentInstallDir")
+
+'WScript.Echo agentDir
+
+location = agentDir&"bin\7za.exe"  
+
+'WScript.Echo location
+'Extraction of the BonjourPSSetup
+returnValue =WshShell.Run(Chr(34)& location &Chr(34)& " x -y BonjourPSSetup.exe",0,TRUE)
+
+'Once the extraction is sucess , install the pre-requisite and msi in the specific order 
+'==============================================================================
+
+if returnValue <> 0 Then
+	Wscript.Quit returnValue
+else
+	if checkOSArch = "x86" Then
+		returnValue=WshShell.Run("msiexec /i Bonjour.msi /qn", 0, TRUE)
+		returnValue=WshShell.Run("msiexec /i BonjourPS.msi /qn", 0, TRUE)
+	else
+		WScript.Echo "x64"
+		returnValue=WshShell.Run("msiexec /i Bonjour64.msi /qn", 0, TRUE)
+		returnValue=WshShell.Run("msiexec /i BonjourPS64.msi /qn", 0, TRUE)
+	End IF
+	
+end if
+Wscript.Quit returnValue
+```
 # Pont niv2 (bridge)
 Un bridge (couche 2 du modèle OSI), permet de relier des réseaux entre eux. C'est particulièrement pratique pour que des machines virtuelles (VMs) aient accès au LAN et aient accès entre elles.
 ## Network Manager
