@@ -105,6 +105,7 @@ nmcli connection delete bridge-slave-eno1
 # nmcli -t connection show
 ```
 # Access Point Wifi (brouillon)
+Objectif : j'ai un dongle USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
 ```sh
 # Pour la clé Wifi Ralink RT5372 (https://wiki.debian.org/fr/rt2800usb), achat Leclerc < 10€, il n'y a pas besoin de pilote
 
