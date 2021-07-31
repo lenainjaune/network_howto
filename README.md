@@ -106,7 +106,7 @@ nmcli connection delete bridge-slave-eno1
 ```
 # Access Point Wifi (brouillon)
 ```sh
-# Pour la clé Wifi Ralink RT5372 (https://wiki.debian.org/fr/rt2800usb), achat Leclerc < 10€
+# Pour la clé Wifi Ralink RT5372 (https://wiki.debian.org/fr/rt2800usb), achat Leclerc < 10€, il n'y a pas besoin de pilote
 
 user@host:~# sudo cat /etc/apt/sources.list
 # deb http://ftp.fr.debian.org/debian/ stretch main
