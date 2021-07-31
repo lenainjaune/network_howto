@@ -125,7 +125,7 @@ user@host:~$ make install
 user@host:~$ cd .. && rm -rf create_ap
 user@host:~$ ip ad
 ...
-3: xenbr0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+3: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
     link/ether d8:cb:8a:36:82:ed brd ff:ff:ff:ff:ff:ff
     inet 192.168.1.127/24 brd 192.168.1.255 scope global xenbr0
        valid_lft forever preferred_lft forever
