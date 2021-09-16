@@ -186,5 +186,12 @@ netsh interface ip set dns name="Connexion au r�seau local" static 192.168.1.1
 Attention : ces modifications sont persistantes, il existe surement une manière de faire comme avec ```ip ad```
 TODO : permettre la configuration temporaire
 
+# Gestionnaire de réseau sous Linux (à compléter, pour mémoire)
+Sous Linux, il existe plusieurs gestionnaires de réseau. [Cette procédure](https://askubuntu.com/questions/1031439/am-i-running-networkmanager-or-networkd/1246465#1246465) permet de savoir lequel est en place.
+
+A noter aussi qu'on peut mixer les technologies. Par exemple on peut confier la gestion de lo à /etc/network/interfaces et les autres interfaces à NetworkManager.
+
+TODO : retrouver la source pour mixer avec NetworkManager
+
 [1]
 Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
