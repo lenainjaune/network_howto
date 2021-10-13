@@ -194,7 +194,7 @@ A noter aussi qu'on peut mixer les technologies. Par exemple on peut confier la 
 TODO : retrouver la source pour mixer avec NetworkManager
 
 # Parefeu
-## Windows : autoriser ICMP depuis LAN
+## Windows : autoriser ICMP depuis LAN (évite de désactiver Parefeu)
 Invite de commande en admin
 ```batch
 C:\Users\USER\Desktop>netsh advfirewall firewall add rule name="ICMP Allow incoming LAN echo request" protocol=icmpv4:8,any dir=in action=allow remoteip=localsubnet
