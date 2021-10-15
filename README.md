@@ -23,7 +23,7 @@ après désinstallation de Samba => ping xxx ne marche plus
 https://www.manageengine.com/products/desktop-central/software-installation/silent_install_Bonjour-Print-Services-2.0.2.html
 
 Silent Installation Switch 	cscript.exe install_bonjour.vbs
-Ou bien directement : msiexec /i BonjourPS64.msi /qn
+Ou bien directement : msiexec /i BonjourPS64.msi /qn (voir aussi [post-install_win7.bat](https://github.com/lenainjaune/post-install/blob/main/README.md))
 ```vbs
 install_bonjour.vbs ouvert
 'ManageEngine Desktop Central 
@@ -199,7 +199,7 @@ Invite de commande en admin
 ```batch
 C:\Users\USER\Desktop>netsh advfirewall firewall add rule name="ICMP Allow incoming LAN echo request" protocol=icmpv4:8,any dir=in action=allow remoteip=localsubnet
 ```
-Sources : généralistes sur [malekal](https://www.malekal.com/netsh-advfirewall-configurer-pare-feu-windows-defender-invite-de-commandes/) et [ici](https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/) pour ce qui concerne ICMP 
+Sources : généralistes sur [malekal](https://www.malekal.com/netsh-advfirewall-configurer-pare-feu-windows-defender-invite-de-commandes/) et [ici](https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/) pour ce qui concerne ICMP (voir aussi [post-install_win7.bat](https://github.com/lenainjaune/post-install/blob/main/README.md))
 
 [1]
 Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
