@@ -201,5 +201,38 @@ C:\Users\USER\Desktop>netsh advfirewall firewall add rule name="ICMP Allow incom
 ```
 Sources : généralistes sur [malekal](https://www.malekal.com/netsh-advfirewall-configurer-pare-feu-windows-defender-invite-de-commandes/) et [ici](https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/) pour ce qui concerne ICMP (voir aussi [post-install_win7.bat](https://github.com/lenainjaune/post-install/blob/main/README.md))
 
+# Bascule filaire/wifi
+## Linux - Network Manager
+Basé sur [Automatically enable and disable WiFi based on Ethernet connection with NetworkManager](https://blog.christophersmart.com/2021/11/02/automatically-enable-and-disable-wifi-based-on-ethernet-connection-with-networkmanager/comment-page-1/).
+
+Testé avec succès sous Debian Bullseye
+```sh
+root@host:~$ cat << \EOF |sudo tee /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+#!/bin/bash
+export LC_ALL=C
+ 
+enable_disable_wifi ()
+{
+    result=$(nmcli dev | grep "ethernet" | grep -w "connected")
+    if [ -n "$result" ]; then
+        nmcli radio wifi off
+    else
+        nmcli radio wifi on
+    fi
+}
+ 
+if [ "$2" = "up" ]; then
+    enable_disable_wifi
+fi
+ 
+if [ "$2" = "down" ]; then
+    enable_disable_wifi
+fi
+EOF
+user@host:~$ chown root:root /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+user@host:~$ chmod 744 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+user@host:~$ systemctl restart NetworkManager
+```
+
 [1]
 Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
