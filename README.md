@@ -200,7 +200,6 @@ Invite de commande en admin
 C:\Users\USER\Desktop>netsh advfirewall firewall add rule name="ICMP Allow incoming LAN echo request" protocol=icmpv4:8,any dir=in action=allow remoteip=localsubnet
 ```
 Sources : généralistes sur [malekal](https://www.malekal.com/netsh-advfirewall-configurer-pare-feu-windows-defender-invite-de-commandes/) et [ici](https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/) pour ce qui concerne ICMP (voir aussi [post-install_win7.bat](https://github.com/lenainjaune/post-install/blob/main/README.md))
-
 # Bascule filaire/wifi
 ## Linux - Network Manager
 Basé sur [Automatically enable and disable WiFi based on Ethernet connection with NetworkManager](https://blog.christophersmart.com/2021/11/02/automatically-enable-and-disable-wifi-based-on-ethernet-connection-with-networkmanager/comment-page-1/).
@@ -232,6 +231,14 @@ EOF
 user@host:~$ chown root:root /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 user@host:~$ chmod 744 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 user@host:~$ systemctl restart NetworkManager
+```
+# Désactiver totalement IPv6
+[Source](https://askubuntu.com/questions/309461/how-to-disable-ipv6-permanently/309463#309463)
+
+```sh
+root@host:~# cat /etc/sysctl.conf | grep ^net.ipv6.conf
+net.ipv6.conf.all.disable_ipv6 = 1
+root@host:~# sysctl -p
 ```
 
 [1]
