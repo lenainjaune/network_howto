@@ -204,6 +204,8 @@ Sources : généralistes sur [malekal](https://www.malekal.com/netsh-advfirewall
 ## Linux - Network Manager
 Basé sur [Automatically enable and disable WiFi based on Ethernet connection with NetworkManager](https://blog.christophersmart.com/2021/11/02/automatically-enable-and-disable-wifi-based-on-ethernet-connection-with-networkmanager/comment-page-1/).
 
+Nota : j'ai modifié les droits en passant de 744 à 745 (droit d'exécution pour les autres, pour exécuter à l'ouverture de session par exemple)
+
 Testé avec succès sous Debian Bullseye
 ```sh
 root@host:~$ cat << \EOF |sudo tee /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
@@ -229,8 +231,23 @@ if [ "$2" = "down" ]; then
 fi
 EOF
 user@host:~$ chown root:root /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
-user@host:~$ chmod 744 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
+user@host:~$ chmod 745 /etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh
 user@host:~$ systemctl restart NetworkManager
+```
+Sous XFCE4 on peut améliorer en déclenchant le script à chaque ouverture de session
+```sh
+user@host:~# cat << EOF > /data/script/wired_wifi_toggler.desktop 
+[Desktop Entry]
+Name=Bascule filaire/Wifi
+Comment=Bascule automatiquement de la connexion filaire prioritaire à la Wifi
+Exec=/etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive.sh "" up
+Terminal=false
+Type=Application
+Icon=network-wired-disconnected
+Categories=Network;
+StartupNotify=false
+EOF
+user@host:~# ln -s /data/script/wired_wifi_toggler.desktop $HOME/.config/autostart/wired_wifi_toggler.desktop 
 ```
 # Désactiver totalement IPv6
 [Source](https://askubuntu.com/questions/309461/how-to-disable-ipv6-permanently/309463#309463)
