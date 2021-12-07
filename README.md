@@ -247,6 +247,7 @@ Icon=network-wired-disconnected
 Categories=Network;
 StartupNotify=false
 EOF
+user@host:~# chmod +x /data/script/wired_wifi_toggler.desktop
 user@host:~# ln -s /data/script/wired_wifi_toggler.desktop $HOME/.config/autostart/wired_wifi_toggler.desktop 
 ```
 # Désactiver totalement IPv6
