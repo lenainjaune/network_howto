@@ -252,6 +252,8 @@ user@host:~# chmod +x /data/script/wired_wifi_toggler.desktop
 user@host:~# ln -s /data/script/wired_wifi_toggler.desktop $HOME/.config/autostart/wired_wifi_toggler.desktop 
 ```
 # Désactiver totalement IPv6
+Attention : dans un cas, n'a pas fonctionné alors que ça aurait du, donc à revoir ! (en attendant j'ai désactivé depuis NetworkManager
+
 [Source](https://askubuntu.com/questions/309461/how-to-disable-ipv6-permanently/309463#309463)
 
 ```sh
