@@ -236,6 +236,7 @@ user@host:~$ systemctl restart NetworkManager
 ```
 Sous XFCE4 on peut améliorer en déclenchant le script à chaque ouverture de session
 ```sh
+user@host:~# mkdir -p /data/script $HOME/.config/autostart
 user@host:~# cat << EOF > /data/script/wired_wifi_toggler.desktop 
 [Desktop Entry]
 Name=Bascule filaire/Wifi
@@ -247,7 +248,6 @@ Icon=network-wired-disconnected
 Categories=Network;
 StartupNotify=false
 EOF
-user@host:~# mkdir -p /data/script $HOME/.config/autostart
 user@host:~# chmod +x /data/script/wired_wifi_toggler.desktop
 user@host:~# ln -s /data/script/wired_wifi_toggler.desktop $HOME/.config/autostart/wired_wifi_toggler.desktop 
 ```
