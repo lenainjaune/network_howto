@@ -252,6 +252,7 @@ user@host:~# chmod +x /data/script/wired_wifi_toggler.desktop
 user@host:~# ln -s /data/script/wired_wifi_toggler.desktop $HOME/.config/autostart/wired_wifi_toggler.desktop 
 ```
 # Désactiver totalement IPv6
+## Linux
 Attention : dans un cas, n'a pas fonctionné alors que ça aurait du, donc à revoir ! (en attendant j'ai désactivé depuis NetworkManager
 
 [Source](https://askubuntu.com/questions/309461/how-to-disable-ipv6-permanently/309463#309463)
@@ -261,6 +262,19 @@ root@host:~# cat /etc/sysctl.conf | grep ^net.ipv6.conf
 net.ipv6.conf.all.disable_ipv6 = 1
 root@host:~# sysctl -p
 ```
+# Routage
+## Linux
+### Passerelle par défaut
+```sh
+@# route add default gw 10.10.1.20
+```
+Ou
+```sh
+@# ip route add default via 10.10.1.20
+```
+
+
+
 
 [1]
 Les causes possibles sont : un mauvais branchement, un câble défectueux, un défaut sur la carte réseau ou la carte mère, un pilote non installé ou non opérationnel, le système d'exploitation défectueux.
