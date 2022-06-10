@@ -102,6 +102,7 @@ nmcli con add type bridge-slave ifname eno1 master br0
 nmcli con modify br0 bridge.stp no
 # nmcli -t -f bridge con show br0
 nmcli con down "Connexion filaire 1" && nmcli con up br0
+# patienter un peu des fois ça met du temps (?)
 
 # Supprimer bridge
 nmcli con down br0 && nmcli con up "Connexion filaire 1"
