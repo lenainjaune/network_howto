@@ -81,6 +81,13 @@ else
 end if
 Wscript.Quit returnValue
 ```
+## Bugs
+### host.local -> host-2.local
+Parfois avahi ne fonctionne pas comme attendu et depuis système distant ```ping host.local``` indique que l'hôte n'est pas accessible MAIS si on utilise **host-2.local** à la place, ça fonctionne.
+
+TODO : centraliser autres trouvailles ici
+
+Voir aussi [cette piste pour forcer le nom](https://raspberrypi.stackexchange.com/questions/22485/how-to-debug-avahi-daemon-hostname-not-coming-through/120864#120864)
 # Pont niv2 (bridge)
 Un bridge (couche 2 du modèle OSI), permet de relier des réseaux entre eux. C'est particulièrement pratique pour que des machines virtuelles (VMs) aient accès au LAN et aient accès entre elles.
 ## Network Manager
