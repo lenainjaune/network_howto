@@ -116,7 +116,8 @@ nmcli connection delete bridge-slave-eno1
 # nmcli -t connection show
 
 # Problème bridge
-# note : remarqué quand e n'ai pas de réseau au boot (ex : BOX éteinte), bascule sur Wired et br0 ne peut se connecter au réseau
+# PB #01 : remarqué quand je n'ai pas de réseau au boot (ex : BOX éteinte)
+# => bascule sur Wired et br0 ne peut se connecter au réseau
 nmcli -t connection show --active
 br0:843bb6a4-064a-4151-a71d-da8b5c76d344:bridge:br0
 # => br0 actif
