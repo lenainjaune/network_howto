@@ -138,6 +138,7 @@ ip ad li br0
 ...
 # => résolu !
 ```
+Voir aussi [ici](https://www.golinuxcloud.com/configure-network-bridge-nmcli-static-dhcp/) (utile) 
 # Access Point Wifi (brouillon)
 Objectif : j'ai un dongle USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
 ```sh
