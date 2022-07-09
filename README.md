@@ -1,6 +1,9 @@
 # network_howto
 Mémo : tout ce qui est relatif au réseau en vrac (avant d'avoir une bonne compréhension)
 
+# Sniff
+Voir [rubrique dédiée](https://github.com/lenainjaune/sniff)
+
 # Accés réseau par nom
 ## Accés réseau par le domaine local (différent de DNS)
 Debian
