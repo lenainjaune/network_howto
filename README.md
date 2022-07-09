@@ -114,6 +114,28 @@ nmcli connection delete br0
 # TODO : trouver méthode pour supprimer automatiquement tous les ports du bridge
 nmcli connection delete bridge-slave-eno1
 # nmcli -t connection show
+
+# Problème bridge
+# note : remarqué quand e n'ai pas de réseau au boot (ex : BOX éteinte), bascule sur Wired et br0 ne peut se connecter au réseau
+nmcli -t connection show --active
+br0:843bb6a4-064a-4151-a71d-da8b5c76d344:bridge:br0
+# => br0 actif
+ip addr show dev br0
+41: br0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 2a:e9:6b:38:0a:62 brd ff:ff:ff:ff:ff:ff
+# => pas d'IP
+# Solution : basculer
+nmcli con down "Wired" && nmcli con up br0
+# => Connexion « Wired » désactivée (chemin D-Bus actif : /org/freedesktop/NetworkManager/ActiveConnection/52)
+#    Connexion activée (master waiting for slaves) (Chemin D-Bus actif : /org/freedesktop/NetworkManager/ActiveConnection/54)
+# ... après quelques instants (PAS immédiat)
+ip ad li br0
+41: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 2a:e9:6b:38:0a:62 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.11/24 brd 192.168.0.255 scope global dynamic noprefixroute br0
+       valid_lft 863611sec preferred_lft 863611sec
+...
+# => résolu !
 ```
 # Access Point Wifi (brouillon)
 Objectif : j'ai un dongle USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
