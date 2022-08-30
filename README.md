@@ -140,9 +140,12 @@ ip ad li br0
 ```
 Voir aussi [ici](https://www.golinuxcloud.com/configure-network-bridge-nmcli-static-dhcp/) (utile) 
 # Access Point Wifi (brouillon)
-Objectif : j'ai un dongle USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
+## Linux
+Objectif : j'ai 2 dongles USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
+### Ralink RT5372 (dongle sans nom)
 ```sh
 # Pour la clé Wifi Ralink RT5372 (https://wiki.debian.org/fr/rt2800usb), achat Leclerc < 10€, il n'y a pas besoin de pilote
+# Peut être que si, voir : https://www.mediatek.com/products/broadband-wifi/rt5370 (DPO_RT5572_LinuxSTA_2.6.1.3_20121022)
 
 user@host:~# sudo cat /etc/apt/sources.list
 # deb http://ftp.fr.debian.org/debian/ stretch main
@@ -197,6 +200,13 @@ try running the following before starting create_ap:
     rfkill unblock wlan
 # nmcli r ... n'a pas fonctionné mais rfkill ... a fonctionné
 ```
+### TP-Link TL-WN823N V3
+Pilotes Linux : https://www.tp-link.com/us/support/download/tl-wn823n/ (TL-WN823N(US)_V3_160315_Linux)
+## Windows
+### Ralink RT5372 (dongle sans nom)
+https://www.mediatek.com/products/broadband-wifi/rt5370 (IS_Setup_ICS_011916_1.5.39.173)
+### TP-Link TL-WN823N V3
+https://www.tp-link.com/us/support/download/tl-wn823n/ (TL-WN823N(US)_V3_181024_Win)
 # Ping
 ## Statistiques sans interruption
 Linux : [Ctrl + \\](https://unix.stackexchange.com/questions/143845/check-ping-statistics-without-stopping)
