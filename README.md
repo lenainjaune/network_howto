@@ -138,7 +138,10 @@ ip ad li br0
 ...
 # => résolu !
 ```
-Voir aussi [ici](https://www.golinuxcloud.com/configure-network-bridge-nmcli-static-dhcp/) (utile) 
+Voir aussi [ici](https://www.golinuxcloud.com/configure-network-bridge-nmcli-static-dhcp/) (utile)
+# Wifi
+## Linux
+Suivre méthodiquement [ce lien](https://forum.ubuntu-fr.org/viewtopic.php?id=1997812) qui donne toutes les commandes utiles et [cette procédure](https://forum.ubuntu-fr.org/viewtopic.php?pid=21716388#p21716388) qui explique comment installer le pilote pour mon dongle TL-WN823N (test en live session)
 # Access Point Wifi (brouillon)
 ## Linux
 Objectif : j'ai 2 dongles USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
