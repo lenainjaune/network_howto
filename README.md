@@ -142,6 +142,42 @@ Voir aussi [ici](https://www.golinuxcloud.com/configure-network-bridge-nmcli-sta
 # Wifi
 ## Linux
 Suivre méthodiquement [ce lien](https://forum.ubuntu-fr.org/viewtopic.php?id=1997812) qui donne toutes les commandes utiles et [cette procédure](https://forum.ubuntu-fr.org/viewtopic.php?pid=21716388#p21716388) qui explique comment installer le pilote pour mon dongle TL-WN823N (test en live session) ou [celle là](https://askubuntu.com/questions/1211157/how-do-i-get-a-tp-link-tl-wn823n-v3-wireless-adapter-working/1212939#1212939) plus détaillée apparemment.
+
+Mon essai pour installer le dongle depuis session Live (sans reboot donc) :
+```sh
+# https://askubuntu.com/questions/1211157/how-do-i-get-a-tp-link-tl-wn823n-v3-wireless-adapter-working/1212939#1212939
+# https://forum.ubuntu-fr.org/viewtopic.php?pid=21716388#p21716388
+
+root@CZ-LIVE:~# uname -a
+Linux CZ-LIVE 5.18.0-2-amd64 #1 SMP PREEMPT_DYNAMIC Debian 5.18.5-1 (2022-06-16) x86_64 GNU/Linux
+
+   56  apt update && apt install dkms linux-headers-generic
+  # => headers 5.18.0-4-amd64
+   57  wget https://github.com/Mange/rtl8192eu-linux-driver/archive/refs/heads/realtek-4.4.x.zip
+   58  unzip realtek-4.4.x.zip
+  # headers pour 5.18.0-2 introuvables => on force avec le generic
+   92  dkms install rtl8192eu-linux-driver-realtek-4.4.x -k 5.18.0-4-amd64
+  # long à installer
+   
+  100  lshw -c network
+  # => You should see the line driver=8192eu
+
+   93  lspci -k -nn | grep -A 3 -i net 
+   94  lsmod
+   99  iwconfig
+
+  # 
+  101  echo "blacklist rtl8xxxu" > /etc/modprobe.d/rtl8xxxu.conf
+
+
+  # supprimer
+   67  dkms status
+   68  dkms remove rtl8192eu/1.0 --all
+
+  # désinstaller    
+  107  dkms uninstall rtl8192eu/1.0 --all
+  # désinstallation immédiate, et reinstall pas possible, il faut supprimer avant ...
+```
 # Access Point Wifi (brouillon)
 ## Linux
 Objectif : j'ai 2 dongles USB wifi et je veux m'en servir en tant que point d'accès. Ainsi, je rend disponible la wifi en local.
