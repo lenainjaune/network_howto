@@ -1,7 +1,21 @@
 # network_howto
 Mémo : tout ce qui est relatif au réseau en vrac (avant d'avoir une bonne compréhension)
 
-# Sniff
+# DHCP
+## DHCP Linux
+### DHCP Linux Client
+Afficher serveurs DHCP et leurs baux
+```sh
+grep -IR "DHCPOFFER" /var/log/*
+```
+## DHCP Windows
+### DHCP Windows client
+Afficher serveur DHCP du bail actuel
+```batch
+ipconfig /all
+```
+
+# Sniff
 Voir [rubrique dédiée](https://github.com/lenainjaune/sniff)
 
 # Accés réseau par nom
