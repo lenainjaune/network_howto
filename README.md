@@ -8,6 +8,7 @@ Afficher serveurs DHCP et leurs baux
 ```sh
 grep -IR "DHCPOFFER" /var/log/*
 ```
+Sources et autres méthodes [ici](https://www.putorius.net/find-dhcp-server-ip-linux.html)
 ## DHCP Windows
 ### DHCP Windows client
 Afficher serveur DHCP du bail actuel
