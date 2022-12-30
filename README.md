@@ -1,3 +1,41 @@
+RO en attente de la fin de migration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # network_howto
 Mémo : tout ce qui est relatif au réseau en vrac (avant d'avoir une bonne compréhension)
 
